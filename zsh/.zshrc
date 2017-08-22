@@ -36,31 +36,10 @@ export PGHOST=localhost
 source ~/.asdf/asdf.sh
 source ~/.asdf/completions/asdf.bash
 
-
-# # # # # # #
-#   Nix     #
-# # # # # # #
-
-source ~/.nix-profile/etc/profile.d/nix.sh
-
 # Fix locale errors
 export LC_ALL="en_US.UTF-8"
 export LANGUAGE="en_US.UTF-8"
-export LOCALE_ARCHIVE="$(readlink ~/.nix-profile/lib/locale)/locale-archive"
 
-# Clean up generations older than 5 days
-nix-env --delete-generations 5d &> /dev/null
-nix-store --gc &> /dev/null
-
-# # # # # # # # # # #
-#  Alias/Functions  #
-# # # # # # # # # # #
-
-if [ -d ~/.config/zsh/functions ]; then
-  for file in ~/.config/zsh/functions/*.zsh; do
-    source $file
-  done
-fi
 
 # # # # # # #
 #   Zplug   #
